@@ -1,7 +1,7 @@
 ---
 # defaults file for android-sdk
 
-android_sdk_download_location: http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+android_sdk_download_location: https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 android_sdk_install_location: /opt
 
 ubuntu_dependency_packages:
@@ -35,20 +35,21 @@ rh_dependency_packages:
 
 android_sdk_update_path: true
 
-android_sdk_base_buildtools_version: 23.0.2 # Used for PATH when android_sdk_update_path is true
+android_sdk_base_buildtools_version: 25.0.3 # Used for PATH when android_sdk_update_path is true
 
 android_sdk_tools_to_install:
-      - "build-tools-{{ android_sdk_base_buildtools_version }}"
-      - build-tools-19.1.0
-      - platform-tools
-      - tools
-      - extra-android-support
-      - extra-google-m2repository
-      - extra-android-m2repository
+  - "build-tools;{{ android_sdk_base_buildtools_version }}"
+  - platform-tools
+  - extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2
+  - extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
+  - extras;android;m2repository
+  - extras;google;m2repository
 android_sdks_to_install:
-      - android-21
-      - android-20
-      - android-19
-      - android-18
-      - android-17
-      - android-16
+  - platforms;android-25
+  - platforms;android-24
+  - platforms;android-23
+  - platforms;android-22
+  - platforms;android-21
+  - platforms;android-20
+  - platforms;android-19
+  - platforms;android-8
