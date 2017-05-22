@@ -1,13 +1,13 @@
 ---
 
 - name: Ensure Android SDK tools directory exists
-  file: path={{ android_sdk_install_location }} state=directory
+  file: path={{ android_sdk_install_location }}/android-sdk-linux state=directory
 
 - name: Download Android SDK tools
-  get_url: url={{ android_sdk_download_location }} dest={{ android_sdk_install_location }}/sdk-download.tgz
+  get_url: url={{ android_sdk_download_location }} dest={{ android_sdk_install_location }}/sdk-download.zip
 
 - name: Extract Android SDK tools
-  unarchive: src={{ android_sdk_install_location }}/sdk-download.tgz dest={{ android_sdk_install_location }} copy=no
+  unarchive: src={{ android_sdk_install_location }}/sdk-download.zip dest={{ android_sdk_install_location }}/android-sdk-linux copy=no
 
 - name: Put the SDK install expect script in place
   template: src=sdk-install.expect.j2 dest={{ android_sdk_install_location }}/sdk-install.expect mode=0755

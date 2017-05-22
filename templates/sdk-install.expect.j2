@@ -1,8 +1,27 @@
 #!/usr/bin/expect
 
+# Install all listed SDKs
 set timeout -1;
-spawn {{ android_sdk_install_location }}/android-sdk-linux/tools/android update sdk --all -u -t "{{ (android_sdk_tools_to_install + android_sdks_to_install) | join(',') }}";
+set joinedSdks "{{ (android_sdk_tools_to_install + android_sdks_to_install) | join(',') }}"
+set sdks [split $joinedSdks ","]
+foreach toInstall $sdks {
+    spawn {{ android_sdk_install_location }}/android-sdk-linux/tools/bin/sdkmanager "$toInstall";
+    expect {
+        "Accept?" { exp_send "y\r" ; exp_continue }
+        eof
+    }
+}
+
+# Accept all licenses
+spawn {{ android_sdk_install_location }}/android-sdk-linux/tools/bin/sdkmanager --licenses;
 expect {
-    "Do you accept the license" { exp_send "y\r" ; exp_continue }
+    "Review licenses that have not been accepted" {
+        exp_send "y\r"
+        exp_continue
+    }
+    "Accept?" {
+        exp_send "y\r"
+        exp_continue
+    }
     eof
 }
