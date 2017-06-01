@@ -59,25 +59,26 @@ A list of yum installable build dependencies for RedHat based OS.
 
 Whether or not the role should update the PATH in /etc/environment with the relevant android SDK locations
 
-    android_sdk_base_buildtools_version: 20.0.0
+    android_sdk_base_buildtools_version: 25.0.3
 
 The main build tools version from the SDK to use, mainly useful for PATH updates.
 
     android_sdk_tools_to_install:
-      - build-tools-20.0.0
-      - build-tools-19.1.0
+      - "build-tools;{{ android_sdk_base_buildtools_version }}"
       - platform-tools
-      - tools
-      - extra-android-support
-      - extra-google-m2repository
-      - extra-android-m2repository
+      - extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2
+      - extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2
+      - extras;android;m2repository
+      - extras;google;m2repository
     android_sdks_to_install:
-      - android-21
-      - android-20
-      - android-19
-      - android-18
-      - android-17
-      - android-16
+      - platforms;android-25
+      - platforms;android-24
+      - platforms;android-23
+      - platforms;android-22
+      - platforms;android-21
+      - platforms;android-20
+      - platforms;android-19
+      - platforms;android-8
 
 The actual Android SDK packages to install using the SDK manager.
 
