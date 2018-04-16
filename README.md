@@ -96,7 +96,9 @@ BSD
 
 ## Author Information
 
-This role was created in 2015 by [Nick Pack](https://github.com/nickpack).
+Steamulo - www.steamulo.com
+
+Forked from [Nick Pack](https://github.com/nickpack).
 
 ## Contributors
 
