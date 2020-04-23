@@ -15,11 +15,11 @@ foreach toInstall $sdks {
 # Accept all licenses
 spawn {{ android_sdk_install_location }}/android-sdk-linux/tools/bin/sdkmanager --licenses;
 expect {
-    "Review licenses that have not been accepted" {
+    -re "Review license.*not been accepted.*" {
         exp_send "y\r"
         exp_continue
     }
-    "Accept?" {
+    -re "Accept.*" {
         exp_send "y\r"
         exp_continue
     }
